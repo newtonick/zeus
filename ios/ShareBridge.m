@@ -6,7 +6,7 @@
 RCT_EXPORT_MODULE(MobileTools);
 
 - (NSURL *)getSharedFileURL {
-    NSString *appGroupID = @"group.com.zeusln.zeus";
+    NSString *appGroupID = @"group.com.klockenga.zeusdev";
     NSURL *containerURL = [[NSFileManager defaultManager] containerURLForSecurityApplicationGroupIdentifier:appGroupID];
     if (containerURL == nil) {
         return nil;

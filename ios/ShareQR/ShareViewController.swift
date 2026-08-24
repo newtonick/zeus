@@ -4,7 +4,7 @@ import UniformTypeIdentifiers
 
 class ShareViewController: SLComposeServiceViewController {
 
-    let appGroupID = "group.com.zeusln.zeus"
+    let appGroupID = "group.com.klockenga.zeusdev"
     let sharedFileName = "sharedQR.txt"
     let appURLScheme = "zeusln://share" 
 
