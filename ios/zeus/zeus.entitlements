@@ -10,7 +10,7 @@
 	</array>
 	<key>com.apple.security.application-groups</key>
 	<array>
-		<string>group.com.zeusln.zeus</string>
+		<string>group.com.klockenga.zeusdev</string>
 	</array>
 </dict>
 </plist>

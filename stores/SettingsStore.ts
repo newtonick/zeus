@@ -56,6 +56,8 @@ export interface Node {
     customMailboxServer?: string;
     // NWC
     nostrWalletConnectUrl?: string;
+    // Phoenixd
+    phoenixdPassword?: string;
     // Embedded LND
     seedPhrase?: string[];
     walletPassword?: string;
@@ -411,6 +413,7 @@ export const INTERFACE_KEYS: {
     { key: 'LND (REST)', value: 'lnd' },
     { key: 'LND (Lightning Node Connect)', value: 'lightning-node-connect' },
     { key: 'Core Lightning (CLNRest)', value: 'cln-rest' },
+    { key: 'Phoenixd', value: 'phoenixd' },
     { key: 'Nostr Wallet Connect', value: 'nostr-wallet-connect' },
     { key: 'LNDHub', value: 'lndhub' }
 ];
@@ -421,6 +424,7 @@ export type Implementations =
     | 'lnd'
     | 'lightning-node-connect'
     | 'cln-rest'
+    | 'phoenixd'
     | 'lndhub'
     | 'nostr-wallet-connect';
 
@@ -1733,6 +1737,8 @@ export default class SettingsStore {
     @observable public isChannelMigrating: boolean = false;
     // NWC
     @observable public nostrWalletConnectUrl: string;
+    // Phoenixd
+    @observable public phoenixdPassword?: string;
     // Favorite currencies
     @observable public favoriteCurrencies: string[] = [];
 
@@ -1984,6 +1990,8 @@ export default class SettingsStore {
             this.ldkVssServer = node.ldkVssServer || DEFAULT_VSS_SERVER;
             // NWC
             this.nostrWalletConnectUrl = node.nostrWalletConnectUrl;
+            // Phoenixd
+            this.phoenixdPassword = node.phoenixdPassword;
         } else {
             // No node selected — clear all node properties to prevent
             // stale references to deleted wallets
@@ -1997,6 +2005,7 @@ export default class SettingsStore {
             this.ldkRgsServer = undefined;
             this.ldkScorerUrl = undefined;
             this.ldkVssServer = undefined;
+            this.phoenixdPassword = undefined;
         }
     };
 

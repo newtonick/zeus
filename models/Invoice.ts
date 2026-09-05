@@ -91,6 +91,9 @@ export default class Invoice extends BaseModel {
     public settled_at?: number;
     public invoice?: string;
     public amount_received_msat?: string | number;
+    // phoenixd: fee the node/ACINQ took on receipt, in sats
+    public fees_sat?: number;
+    public payer_note?: string;
     public formattedOriginalTimeUntilExpiry: string;
     public formattedTimeUntilExpiry: string;
 
@@ -257,6 +260,12 @@ export default class Invoice extends BaseModel {
                   Number(this.amt) ||
                   this.getRequestAmount ||
                   0;
+    }
+
+    // fee taken on receipt in satoshis (phoenixd: the fee ACINQ takes
+    // for incoming liquidity); 0 on backends that don't report one
+    @computed public get getFee(): number {
+        return Number(this.fees_sat) || 0;
     }
 
     // return amount in satoshis
